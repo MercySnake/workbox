@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>workbox pc test index</title>
+  <link rel="stylesheet" href="//s.autoimg.cn/www/site/widget/css/autoshow.css">
+</head>
+<body>
+  <div class="container">
+    <div class="athm-title">
+      <div class="athm-title__name">Workbox<span class="athm-title__name-sub">精选</span></div>
+    </div>
+    <ul>
+      <li>原创试车视频汇总</li>
+      <li>老车主看全新凯越</li>
+      <li>广州智能网上车展</li>
+      <li>风行万元购车礼包</li>
+      <li>车型功能演示视频</li>
+      <li>大叔据说给你观点</li>
+    </ul>
+    <p><img src="https://qnwww2.autoimg.cn/youchuang/g28/M0A/53/E7/autohomecar__ChsEnlv2EuOAdIFiAAPjAPFOYOI766.jpg?imageView2/1/w/380/h/214" alt=""></p>
+    <ul class="athm-tab">
+      <li class="athm-tab__item">
+        <a class="athm-tab__link active" href="##" data-toggle="tab">选项1</a>
+      </li>
+      <li class="athm-tab__item">
+        <a class="athm-tab__link " href="##" data-toggle="tab">选项2</a>
+      </li>
+      <li class="athm-tab__item">
+        <a class="athm-tab__link " href="##" data-toggle="tab">选项3</a>
+      </li>
+      <li class="athm-tab__item">
+        <a class="athm-tab__link " href="##" data-toggle="tab">选项4</a>
+      </li>
+      <li class="athm-tab__item">
+        <a class="athm-tab__link " href="##" data-toggle="tab">选项5</a>
+      </li>
+    </ul>
+  </div>
+  <script src="//s.autoimg.cn/com/co.ashx?path=/as/seajs/2.3.0/bundle.js,/as/jquery/1.12.4/jquery.js,/www/site/index/js/common.js&amp;20180320"></script>
+  <script>
+    seajs.config({
+      version: '20181123',
+      alias: {
+        'toolCookie': '//s.autoimg.cn/car/sidebar/common/js/tool-cookie.js',
+        'toolbar': '//s.autoimg.cn/car/sidebar/common/js/toolbar-1.1.0.js'
+      }
+    })
+    seajs.use(['jquery', 'toolbar'], function($, toolbar) {
+      // 初始化工具栏(无参数)
+      toolbar.init(); 
+    });
+  </script>
+  <script async>
+    // Check that service workers are registered
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/pc/sw.js')
+          .then((registration) => {
+            console.log('ServiceWorker 注册成功: ', registration.scope);
+          })
+          .catch((error) => {
+            console.log('ServiceWorker 注册失败: ', error);
+          });
+      });
+    } else {
+      console && console.log && console.log('serviceWorker not work!');
+    }
+  </script>
+</body>
+</html>
