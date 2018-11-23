@@ -6,9 +6,17 @@ workbox.setConfig({
 workbox.skipWaiting();
 workbox.clientsClaim();
 // html 缓存
-// workbox.routing.registerRoute(
-
-// );
+workbox.routing.registerRoute(
+  new RegExp('/pc/$'),
+  workbox.strategies.networkFirst({
+    cacheName: 'athm-html-cache',
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxEntries: 10
+      })
+    ]
+  })
+);
 // css js
 workbox.routing.registerRoute(
   new RegExp('https://s\.autoimg\.cn/.*\.(?:js|css)'),
