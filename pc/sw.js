@@ -9,7 +9,7 @@ workbox.clientsClaim();
 workbox.routing.registerRoute(
   new RegExp('/pc/$'),
   workbox.strategies.networkFirst({
-    cacheName: 'athm-html-cache',
+    cacheName: 'athm-html-cache-pc',
     plugins: [
       new workbox.expiration.Plugin({
         maxEntries: 10
@@ -21,7 +21,7 @@ workbox.routing.registerRoute(
 workbox.routing.registerRoute(
   new RegExp('https://s\.autoimg\.cn/.*\.(?:js|css)'),
   workbox.strategies.staleWhileRevalidate({
-    cacheName: 'athm-static-cache',
+    cacheName: 'athm-static-cache-pc',
     plugins: [
       new workbox.expiration.Plugin({
         maxEntries: 10
