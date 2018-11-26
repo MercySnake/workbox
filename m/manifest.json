@@ -1,1 +1,25 @@
-{}
+{
+  "name": "汽车之家",
+  "short_name": "汽车之家",
+  "description": "汽车之家为您提供最新汽车报价，汽车图片，汽车价格大全，最精彩的汽车新闻、行情、评测、导购内容，是提供信息最快最全的中国汽车网站。",
+  "lang": "cn",
+  "icons": [
+    {
+      "src": "images/logo_114.png",
+      "type": "image/png",
+      "sizes": "114x114"
+    }
+  ],
+  "start_url": "/m/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#2873FF",
+  "background_color": "#fff",
+  "related_applications": [
+    {
+      "platform": "itunes",
+      "url": "https://itunes.apple.com/cn/app/id385919493?mt=8"
+    }
+  ],
+  "prefer_related_applications": false
+}
