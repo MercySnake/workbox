@@ -8,7 +8,22 @@
   <link href="//s.autoimg.cn/car/sw/logo_114.png" rel="apple-touch-icon-precomposed">
   <link href="//s.autoimg.cn/car/sw/logo_114.png" rel="Shortcut Icon" type="image/x-icon">
   <title>汽车之家触屏版</title>
-  <style>*{padding: 0; margin: 0;}</style>
+  <style>
+    *{padding: 0; margin: 0;}
+    .tip{
+      width: 100%;
+      height: 24px;
+      color: #fff;
+      line-height: 24px;
+      text-align: center;
+    }
+    .tip.online{
+      background-color: #4c85ed;
+    }
+    .tip.offline{
+      background-color: #ff8300;
+    }
+  </style>
   <link href="//s.autoimg.cn/mass/unify-aui.css" rel="stylesheet">
 </head>
 <body>
@@ -53,6 +68,7 @@
       <div>&copy;2018&nbsp;汽车之家&nbsp;m.autohome.com.cn</div>
       <div><a href="../pc/">去 pc 页</a></div>
     </section>
+    <section style="text-align: center;" id="userAgent"></section>
   </section>
   <script src="//s.autoimg.cn/mass/zepto-1.2.2.min.js"></script>
   <script src="//s.autoimg.cn/mass/mass-2.4.5.min.js"></script>
@@ -70,7 +86,29 @@
       });
     } else {
       console && console.log && console.log('serviceWorker not work!');
+    };
+
+    // 显示网络状态
+    const setLineStatus = (lineStatus) => {
+      const lineStatusStr = `<div id="lineStatus" class="tip ${lineStatus}">
+        当前网络状态：${lineStatus}
+      </div>`;
+      if ($('#lineStatus').size() > 0) {
+        $('#lineStatus').text(`当前网络状态：${lineStatus}`).attr(`class`, `tip ${lineStatus}`);
+      }else {
+        $(lineStatusStr).insertBefore('body');
+      };
     }
+    if (navigator.onLine) {
+      setLineStatus('online')
+    } else {
+      setLineStatus('offline')
+    }
+    window.addEventListener('online', () => setLineStatus('online'));
+    window.addEventListener('offline', () => setLineStatus('offline'));
+    // 显示 userAgent
+    $('#userAgent').html(navigator.userAgent);
+
   </script>
 </body>
 </html>
