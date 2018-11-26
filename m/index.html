@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>workbox</title>
+  <link href="//x.autoimg.cn/com/com.ashx?path=[/m/style/v3.5.27/homepage.css]" rel="stylesheet">
+</head>
+<body>
+  <section class="wrapper">
+    <section class="athm-nav">
+      <div class="athm-nav-header">
+        <a class="athm-nav-header__logo" href="//m.autohome.com.cn"></a>
+        <a class="athm-nav-header__camera" href="//sou.m.autohome.com.cn/h5/takecar/takecar.html"></a>
+        <a class="athm-nav-header__login" href="//account.m.autohome.com.cn">
+          <img src="//s.autoimg.cn/mass/avatar.png">
+          <i style="display:none"></i>
+        </a>
+        <div class="athm-nav__searchframe" data-tosearch="0">搜索</div>
+        <!--
+        data-tosearch 设置对应搜索业务如下：
+        0：综合； 1：文章； 2：论坛； 3：视频； 4：找车； 5：车家号；
+        -->
+      </div>
+      <div class="athm-nav-service" data-role-sticky>
+        <div class="athm-nav-service__assist">
+          <div class="athm-nav-service__chief">
+            <a class="activate" href="//m.autohome.com.cn">首页</a>
+            <a href="//car.m.autohome.com.cn">找车</a>
+            <a href="//m.autohome.com.cn/index-club">论坛</a>
+            <a href="//m.che168.com/beijing/list/?pvareaid=105712">二手车</a>
+            <a href="//m.autohome.com.cn/index-service">服务</a>
+          </div>
+          <div class="athm-nav-service__arrow"></div>
+          <div class="athm-nav-service__arrowlayer">
+            <a href="//m.mall.autohome.com.cn/">车商城</a>
+            <a href="//j.autohome.com.cn/platform/index.html">金融</a>
+          </div>
+          <div class="athm-nav__mask"></div>
+          <div class="athm-nav__searchicon" data-tosearch="0"></div>
+          <!-- data-tosearch 设置与上面的搜索一致。-->
+        </div>
+      </div>
+    </section>
+    <section class="athm-carousel" data-role="carousel" data-timeout="5000" data-autoplay="true" data-speed="300">
+      <!-- 根据图片的比例需给 .athm-carousel 设置的高度，用于占位 -->
+      <ul class="carousel">
+        <li class="c-item">
+          <a href="#"><img src="http://via.placeholder.com/750x375.png"></a>
+        </li>
+        <li class="c-item">
+          <a href="#"><img src="http://via.placeholder.com/750x375.png"></a>
+        </li>
+        <li class="c-item">
+          <a href="#"><img src="http://via.placeholder.com/750x375.png"></a>
+        </li>
+      </ul>
+      <div class="navi"><span class="dot"></span></div>
+    </section>
+    <section class="athm-title"><span class="athm-title__item">iconFont</span></section>
+    <ul>
+      <li><i class="athm-iconfont athm-iconfont-app"></i></li>
+      <li><i class="athm-iconfont athm-iconfont-add"></i></li>
+      <li><i class="athm-iconfont athm-iconfont-star"></i></li>
+    </ul>
+    <section class="athm-title"><span class="athm-title__item">Tab</span></section>
+    <section data-role="tabSwitch" data-role="tabSwitch">
+      <section class="athm-tab" data-role="tab">
+        <i class="item-sign"></i>
+        <span class="athm-tab__item item activate">推荐</span>
+        <span class="athm-tab__item item disabled">二手车</span>
+        <span class="athm-tab__item item">分期</span>
+        <span class="athm-tab__item item">促销</span>
+      </section>
+      <section data-role="content" style="text-align: center;">
+        <div><div style="line-height: 80px; text-align: center;">推荐内容</div></div>
+        <div class="fn-hide"><div style="line-height: 80px; text-align: center;">二手车内容</div></div>
+        <div class="fn-hide"><div style="line-height: 80px; text-align: center;">分期内容</div></div>
+        <div class="fn-hide"><div style="line-height: 80px; text-align: center;">促销内容</div></div>
+      </section>
+    </section>
+    <section class="athm-footer">
+      <a href="//m.autohome.com.cn/bug/">给我们建议</a>
+      <div>&copy;2018&nbsp;汽车之家&nbsp;m.autohome.com.cn</div>
+    </section>
+  </section>
+  <script type="text/javascript" src="//x.autoimg.cn/com/com.ashx?path=[/m/js/v2.7.59/zepto-1.2.min.js,area/areautil.js,User/UserHelper.min.js,as/mass-2.0.min.js,public/trackevent.min.js]"></script>
+  <script async>
+    // Check that service workers are registered
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then((registration) => {
+            console.log('ServiceWorker 注册成功: ', registration.scope);
+          })
+          .catch((error) => {
+            console.log('ServiceWorker 注册失败: ', error);
+          });
+      });
+    } else {
+      console && console.log && console.log('serviceWorker not work!');
+    }
+  </script>
+</body>
+</html>
