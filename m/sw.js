@@ -19,7 +19,7 @@ workbox.routing.registerRoute(
 );
 // css js
 workbox.routing.registerRoute(
-  new RegExp('https://x\.autoimg\.cn/.*\.(?:js|css)'),
+  new RegExp('https://s\.autoimg\.cn/.*\.(?:js|css)'),
   workbox.strategies.staleWhileRevalidate({
     cacheName: 'athm-static-cache-m',
     plugins: [
