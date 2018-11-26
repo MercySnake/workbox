@@ -11,6 +11,7 @@
     }
   ],
   "start_url": "/workbox/m/",
+  "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#2873FF",
