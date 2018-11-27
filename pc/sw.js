@@ -1,13 +1,17 @@
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("https://s.autoimg.cn/fe/workbox/3.6.3/workbox-sw.js");
 workbox.setConfig({
   debug: true,
-  // modulePathPrefix: ""
+  modulePathPrefix: "https://s.autoimg.cn/fe/workbox/3.6.3/"
 });
 workbox.skipWaiting();
 workbox.clientsClaim();
+
 // html 缓存
 workbox.routing.registerRoute(
-  new RegExp('/pc/$'),
+  // (e) => {
+  //   console.log(e.url)
+  // },
+  new RegExp('/(.*)'),
   workbox.strategies.networkFirst({
     cacheName: 'athm-html-cache-pc',
     plugins: [
@@ -16,7 +20,17 @@ workbox.routing.registerRoute(
       })
     ]
   })
-);
+)
+// .then(response => {
+//   console.log(response)
+//   if (!response) {
+//     return caches.match('pages/offline.html');
+//   } else if (response.status === 404) {
+//     return caches.match('pages/404.html');
+//   }
+//   return response;
+// });
+
 // css js
 workbox.routing.registerRoute(
   new RegExp('https://s\.autoimg\.cn/.*\.(?:js|css)'),

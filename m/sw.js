@@ -1,13 +1,14 @@
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+// importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("https://s.autoimg.cn/fe/workbox/3.6.3/workbox-sw.js");
 workbox.setConfig({
   debug: true,
-  // modulePathPrefix: ""
+  modulePathPrefix: "https://s.autoimg.cn/fe/workbox/3.6.3/"
 });
 workbox.skipWaiting();
 workbox.clientsClaim();
 // html 缓存
 workbox.routing.registerRoute(
-  new RegExp('/m/$'),
+  new RegExp('/(.*)'),
   workbox.strategies.networkFirst({
     cacheName: 'athm-html-cache-m',
     plugins: [
