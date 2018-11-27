@@ -5,9 +5,19 @@
   "lang": "cn",
   "icons": [
     {
-      "src": "images/logo_114.png",
+      "src": "https://s.autoimg.cn/car/sw/logo_512.png",
       "type": "image/png",
-      "sizes": "114x114"
+      "sizes": "512x512"
+    },
+    {
+      "src": "https://s.autoimg.cn/car/sw/logo_192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://s.autoimg.cn/car/sw/logo_144.png",
+      "type": "image/png",
+      "sizes": "144x144"
     }
   ],
   "start_url": "/workbox/m/",
@@ -15,7 +25,7 @@
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#2873FF",
-  "background_color": "#fff",
+  "background_color": "#2873FF",
   "related_applications": [
     {
       "platform": "itunes",
