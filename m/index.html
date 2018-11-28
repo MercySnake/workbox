@@ -73,7 +73,7 @@
       <a href="//m.autohome.com.cn/bug/">给我们建议</a>
       <div>&copy;2018&nbsp;汽车之家&nbsp;m.autohome.com.cn</div>
       <div><a href="../pc/">去 pc 页</a></div>
-      <div><button id="addHomescreen">添加到主屏幕</button></div>
+      <!-- <div><button id="addHomescreen">添加到主屏幕</button></div> -->
     </section>
     <section style="text-align: center;" id="userAgent"></section>
     <section class="tip" id="lineStatus"></section>
@@ -110,26 +110,26 @@
     // 显示 userAgent
     $('#userAgent').html(navigator.userAgent);
     // 横幅事件
-    var deferredPrompt = null;
-    window.addEventListener('beforeinstallprompt', function (e) {
-      // 将事件返回存储起来
-      deferredPrompt = e;
-      // 取消默认事件
-      e.preventDefault();
-      return false;
-    });
-    // 当按钮点击事件触发的时候，再去触发安装横幅的显示
-    $('#addHomescreen').on('click', function () {
-      if (deferredPrompt != null) {
-        // 异步触发横幅显示
-        deferredPrompt.prompt();
-        // 检测用户的安装行为
-        deferredPrompt.userChoice.then(function (choiceResult) {
-          console.log(choiceResult.outcome);
-        });
-        deferredPrompt = null;
-      }
-    });
+    // var deferredPrompt = null;
+    // window.addEventListener('beforeinstallprompt', function (e) {
+    //   // 将事件返回存储起来
+    //   deferredPrompt = e;
+    //   // 取消默认事件
+    //   e.preventDefault();
+    //   return false;
+    // });
+    // // 当按钮点击事件触发的时候，再去触发安装横幅的显示
+    // $('#addHomescreen').on('click', function () {
+    //   if (deferredPrompt != null) {
+    //     // 异步触发横幅显示
+    //     deferredPrompt.prompt();
+    //     // 检测用户的安装行为
+    //     deferredPrompt.userChoice.then(function (choiceResult) {
+    //       console.log(choiceResult.outcome);
+    //     });
+    //     deferredPrompt = null;
+    //   }
+    // });
 
   </script>
 </body>
