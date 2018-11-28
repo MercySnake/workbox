@@ -75,6 +75,7 @@
       <div><a href="../pc/">去 pc 页</a></div>
     </section>
     <section style="text-align: center;" id="userAgent"></section>
+    <section class="tip" id="lineStatus"></section>
   </section>
   <script src="//s.autoimg.cn/mass/zepto-1.2.2.min.js"></script>
   <script src="//s.autoimg.cn/mass/mass-2.4.5.min.js"></script>
@@ -96,14 +97,7 @@
 
     // 显示网络状态
     const setLineStatus = (lineStatus) => {
-      const lineStatusStr = `<div id="lineStatus" class="tip ${lineStatus}">
-        当前网络状态：${lineStatus}
-      </div>`;
-      if ($('#lineStatus').size() > 0) {
-        $('#lineStatus').text(`当前网络状态：${lineStatus}`).attr(`class`, `tip ${lineStatus}`);
-      }else {
-        $(lineStatusStr).insertBefore('body');
-      };
+      $('#lineStatus').text(`当前网络状态：${lineStatus}`).attr(`class`, `tip ${lineStatus}`);
     }
     if (navigator.onLine) {
       setLineStatus('online')
@@ -114,6 +108,23 @@
     window.addEventListener('offline', () => setLineStatus('offline'));
     // 显示 userAgent
     $('#userAgent').html(navigator.userAgent);
+    // 横幅事件
+    var deferredPrompt = localStorage.getItem('deferredPrompt');
+    window.addEventListener('beforeinstallprompt', function(e) {
+      // 如果用户已经安装了应用，不触发
+      if (!deferredPrompt) { return false; }
+
+      e.userChoice.then(function(choiceResult) {
+        console.log(choiceResult.outcome);
+        if(choiceResult.outcome == 'dismissed') {
+          console.log('用户取消安装应用');
+        }
+        else {
+          console.log('用户安装了应用');
+          localStorage.setItem('deferredPrompt', 1);
+        }
+      });
+    });
 
   </script>
 </body>
