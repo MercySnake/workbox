@@ -119,7 +119,7 @@
       return false;
     });
     // 当按钮点击事件触发的时候，再去触发安装横幅的显示
-    $('#addHomescreen').addEventListener('click', function () {
+    $('#addHomescreen').on('click', function () {
       if (deferredPrompt != null) {
         // 异步触发横幅显示
         deferredPrompt.prompt();
