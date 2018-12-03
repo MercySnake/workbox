@@ -10,7 +10,7 @@ $(function() {
     // 初始化工具栏(无参数)
     toolbar.init(); 
   });
-  $('.athm-title__name-sub').on('click', function() {
-    alert($(this).text() + '嘿嘿');
-  });
+  // $('.athm-title__name-sub').on('click', function() {
+  //   alert($(this).text() + '嘿嘿');
+  // });
 });
