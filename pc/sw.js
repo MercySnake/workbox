@@ -26,8 +26,7 @@ workbox.routing.registerRoute(
     cacheName: 'athm-pc-static',
     plugins: [
       new workbox.expiration.Plugin({
-        maxEntries: 20,
-        maxAgeSeconds: 60
+        maxEntries: 20
       })
     ]
   })
