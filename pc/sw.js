@@ -6,12 +6,18 @@ workbox.setConfig({
 workbox.skipWaiting();
 workbox.clientsClaim();
 
+var cacheList = [
+  '/pc/'
+]
 // html 缓存
 workbox.routing.registerRoute(
-  // (e) => {
-  //   console.log(e.url)
-  // },
-  new RegExp('/(.*)'),
+  function(e) {
+    if (~cacheList.indexOf(e.url.pathname)) {
+      return true;
+    } else {
+      return false;
+    }
+  },
   workbox.strategies.networkFirst({
     cacheName: 'athm-html-cache-pc',
     plugins: [
@@ -21,6 +27,48 @@ workbox.routing.registerRoute(
     ]
   })
 )
+
+// css js 
+workbox.routing.registerRoute(
+  new RegExp('.*\.(?:js|css)'),
+  workbox.strategies.cacheFirst({
+    cacheName: 'athm-static-cache-pc',
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxEntries: 10
+      })
+    ]
+  })
+);
+
+// css js cdn
+workbox.routing.registerRoute(
+  new RegExp('https://s\.autoimg\.cn/.*\.(?:js|css)'),
+  workbox.strategies.staleWhileRevalidate({
+    cacheName: 'athm-static-cdn-pc',
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxEntries: 10
+      })
+    ]
+  })
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // .then(response => {
 //   console.log(response)
 //   if (!response) {
@@ -30,16 +78,3 @@ workbox.routing.registerRoute(
 //   }
 //   return response;
 // });
-
-// css js
-workbox.routing.registerRoute(
-  new RegExp('https://s\.autoimg\.cn/.*\.(?:js|css)'),
-  workbox.strategies.staleWhileRevalidate({
-    cacheName: 'athm-static-cache-pc',
-    plugins: [
-      new workbox.expiration.Plugin({
-        maxEntries: 10
-      })
-    ]
-  })
-);

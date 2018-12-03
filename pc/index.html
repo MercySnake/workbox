@@ -55,19 +55,7 @@
     <p><a href="../m/">去 m 页</a></p>
   </div>
   <script src="//s.autoimg.cn/com/co.ashx?path=/as/seajs/2.3.0/bundle.js,/as/jquery/1.12.4/jquery.js,/www/site/index/js/common.js&amp;20180320"></script>
-  <script>
-    seajs.config({
-      version: '20181123',
-      alias: {
-        'toolCookie': '//s.autoimg.cn/car/sidebar/common/js/tool-cookie.js',
-        'toolbar': '//s.autoimg.cn/car/sidebar/common/js/toolbar-1.1.0.js'
-      }
-    })
-    seajs.use(['jquery', 'toolbar'], function($, toolbar) {
-      // 初始化工具栏(无参数)
-      toolbar.init(); 
-    });
-  </script>
+  <script src="index.js"></script>
   <script async>
     // Check that service workers are registered
     if ('serviceWorker' in navigator) {
