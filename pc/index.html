@@ -56,21 +56,15 @@
   </div>
   <script src="//s.autoimg.cn/com/co.ashx?path=/as/seajs/2.3.0/bundle.js,/as/jquery/1.12.4/jquery.js,/www/site/index/js/common.js&amp;20180320"></script>
   <script src="index.js"></script>
-  <script async>
-    // Check that service workers are registered
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js')
-          .then((registration) => {
-            console.log('ServiceWorker 注册成功: ', registration.scope);
-          })
-          .catch((error) => {
-            console.log('ServiceWorker 注册失败: ', error);
-          });
-      });
-    } else {
-      console && console.log && console.log('serviceWorker not work!');
-    }
+  <script>
+    window.onload = function () {
+      var script = document.createElement('script');
+      var firstScript = document.getElementsByTagName('script')[0];
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = 'sw-register.js?v=' + Date.now();
+      firstScript.parentNode.insertBefore(script, firstScript);
+    };
   </script>
 </body>
 </html>

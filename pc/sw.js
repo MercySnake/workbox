@@ -28,27 +28,14 @@ workbox.routing.registerRoute(
   })
 )
 
-// css js 
-workbox.routing.registerRoute(
-  new RegExp('.*\.(?:js|css)'),
-  workbox.strategies.cacheFirst({
-    cacheName: 'athm-static-cache-pc',
-    plugins: [
-      new workbox.expiration.Plugin({
-        maxEntries: 10
-      })
-    ]
-  })
-);
-
 // css js cdn
 workbox.routing.registerRoute(
   new RegExp('https://s\.autoimg\.cn/.*\.(?:js|css)'),
   workbox.strategies.staleWhileRevalidate({
-    cacheName: 'athm-static-cdn-pc',
+    cacheName: 'athm-static-cache-pc',
     plugins: [
       new workbox.expiration.Plugin({
-        maxEntries: 10
+        maxEntries: 20
       })
     ]
   })
