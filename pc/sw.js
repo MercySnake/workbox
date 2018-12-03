@@ -6,19 +6,10 @@ workbox.setConfig({
 workbox.skipWaiting();
 workbox.clientsClaim();
 
-var cacheList = [
-  '/pc/'
-]
+
 // html 缓存
 workbox.routing.registerRoute(
-  function(event) {
-    if (event.url.host === 'mercysnake.github.io') {
-      if (~cacheList.indexOf(event.url.pathname)) return true;
-      else return false;
-    }else {
-      return false
-    }
-  },
+  'https://mercysnake.github.io/workbox/pc/',
   workbox.strategies.networkFirst({
     cacheName: 'athm-html-cache-pc',
     plugins: [
