@@ -6,10 +6,23 @@ workbox.setConfig({
 workbox.skipWaiting();
 workbox.clientsClaim();
 
+// self.__precacheManifest = [
+//   {
+//     url: '/',
+//     revision: '11'
+//   }
+// ];
+// workbox.precaching.precacheAndRoute(
+//   self.__precacheManifest || [],
+//   {
+//     directoryIndex: "/",
+//     ignoreUrlParametersMatching: [/.*/]
+//   }
+// );
 
 // html 缓存
 workbox.routing.registerRoute(
-  new RegExp('/(.*)'),
+  new RegExp('/pc/(.*)'),
   workbox.strategies.networkFirst({
     cacheName: 'athm-pc-homepage',
     plugins: [
