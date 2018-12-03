@@ -9,9 +9,9 @@ workbox.clientsClaim();
 
 // html 缓存
 workbox.routing.registerRoute(
-  'https://mercysnake.github.io/workbox/pc/',
+  new RegExp('/(.*)'),
   workbox.strategies.networkFirst({
-    cacheName: 'athm-html-cache-pc',
+    cacheName: 'athm-pc-homepage',
     plugins: [
       new workbox.expiration.Plugin({
         maxEntries: 10
@@ -24,7 +24,7 @@ workbox.routing.registerRoute(
 workbox.routing.registerRoute(
   new RegExp('https://s\.autoimg\.cn/.*\.(?:js|css)'),
   workbox.strategies.staleWhileRevalidate({
-    cacheName: 'athm-static-cache-pc',
+    cacheName: 'athm-pc-static',
     plugins: [
       new workbox.expiration.Plugin({
         maxEntries: 20
