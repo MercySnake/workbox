@@ -11,11 +11,12 @@ var cacheList = [
 ]
 // html 缓存
 workbox.routing.registerRoute(
-  function(e) {
-    if (~cacheList.indexOf(e.url.pathname)) {
+  function(event) {
+    if (event.url.host === 'mercysnake.github.io' 
+      && ~cacheList.indexOf(event.url.pathname)) {
       return true;
-    } else {
-      return false;
+    }else {
+      return false
     }
   },
   workbox.strategies.networkFirst({
