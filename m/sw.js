@@ -22,7 +22,7 @@ workbox.routing.registerRoute(
 workbox.routing.registerRoute(
   new RegExp('https://s\.autoimg\.cn/.*\.(?:js|css)'),
   workbox.strategies.staleWhileRevalidate({
-    cacheName: 'athm-pc-static',
+    cacheName: 'athm-m-static',
     plugins: [
       new workbox.expiration.Plugin({
         maxEntries: 10
