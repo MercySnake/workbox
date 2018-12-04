@@ -4,21 +4,29 @@ workbox.setConfig({
   debug: true,
   modulePathPrefix: "https://s.autoimg.cn/fe/workbox/3.6.3/"
 });
-workbox.core.setCacheNameDetails({
-  prefix: 'athm-m',
-  suffix: 'v2',
-  precache: 'precache',
-  runtime: 'runtime-cache'
-});
 workbox.skipWaiting();
 workbox.clientsClaim();
 // html 缓存
 workbox.routing.registerRoute(
   new RegExp('/(.*)'),
-  workbox.strategies.networkFirst()
+  workbox.strategies.networkFirst({
+    cacheName: 'athm-m-homepage',
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxEntries: 10
+      })
+    ]
+  })
 );
 // css js
 workbox.routing.registerRoute(
   new RegExp('https://s\.autoimg\.cn/.*\.(?:js|css)'),
-  workbox.strategies.staleWhileRevalidate()
+  workbox.strategies.staleWhileRevalidate({
+    cacheName: 'athm-pc-static',
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxEntries: 10
+      })
+    ]
+  })
 );

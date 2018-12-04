@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>汽车之家触屏版</title>
-  <link rel="manifest" href="manifest.json?v=2">
+  <link rel="manifest" href="manifest.json?v=1.0.0">
   <link href="//s.autoimg.cn/car/sw/logo_114.png" rel="apple-touch-icon-precomposed">
   <link href="//s.autoimg.cn/car/sw/logo_114.png" rel="Shortcut Icon" type="image/x-icon">
   <meta name="theme-color" content="#2873FF">
@@ -81,57 +81,7 @@
   </section>
   <script src="//s.autoimg.cn/mass/zepto-1.2.2.min.js"></script>
   <script src="//s.autoimg.cn/mass/mass-2.4.5.min.js"></script>
-  <script async>
-    // Check that service workers are registered
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js')
-          .then((registration) => {
-            console.log('ServiceWorker 注册成功: ', registration.scope);
-          })
-          .catch((error) => {
-            console.log('ServiceWorker 注册失败: ', error);
-          });
-      });
-    } else {
-      console && console.log && console.log('serviceWorker not work!');
-    };
-
-    // 显示网络状态
-    const setLineStatus = (lineStatus) => {
-      $('#lineStatus').text(`当前网络状态：${lineStatus}`).attr(`class`, `tip ${lineStatus}`);
-    }
-    if (navigator.onLine) {
-      setLineStatus('online')
-    } else {
-      setLineStatus('offline')
-    }
-    window.addEventListener('online', () => setLineStatus('online'));
-    window.addEventListener('offline', () => setLineStatus('offline'));
-    // 显示 userAgent
-    $('#userAgent').html(navigator.userAgent);
-    // 横幅事件
-    // var deferredPrompt = null;
-    // window.addEventListener('beforeinstallprompt', function (e) {
-    //   // 将事件返回存储起来
-    //   deferredPrompt = e;
-    //   // 取消默认事件
-    //   e.preventDefault();
-    //   return false;
-    // });
-    // // 当按钮点击事件触发的时候，再去触发安装横幅的显示
-    // $('#addHomescreen').on('click', function () {
-    //   if (deferredPrompt != null) {
-    //     // 异步触发横幅显示
-    //     deferredPrompt.prompt();
-    //     // 检测用户的安装行为
-    //     deferredPrompt.userChoice.then(function (choiceResult) {
-    //       console.log(choiceResult.outcome);
-    //     });
-    //     deferredPrompt = null;
-    //   }
-    // });
-
-  </script>
+  <script src="//s.autoimg.cn/car/sw/color.js?v=1.0.0"></script>
+  <script src="sw-register.js" async></script>
 </body>
 </html>

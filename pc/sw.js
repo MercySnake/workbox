@@ -17,16 +17,15 @@ workbox.routing.registerRoute(
       })
     ]
   })
-)
-
+);
 // css js cdn
 workbox.routing.registerRoute(
-  new RegExp('https://s\.autoimg\.cn/.*\.(?:js|css)'),
+  new RegExp('http(s)*://s\.autoimg\.cn/.*\.(?:js|css)'),
   workbox.strategies.staleWhileRevalidate({
     cacheName: 'athm-pc-static',
     plugins: [
       new workbox.expiration.Plugin({
-        maxEntries: 20
+        maxEntries: 10
       })
     ]
   })
