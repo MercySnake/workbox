@@ -6,7 +6,7 @@ workbox.setConfig({
 });
 workbox.core.setCacheNameDetails({
   prefix: 'athm-m',
-  suffix: 'v1',
+  suffix: 'v2',
   precache: 'precache',
   runtime: 'runtime-cache'
 });
