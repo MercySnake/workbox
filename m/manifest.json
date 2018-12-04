@@ -20,7 +20,7 @@
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#2873FF",
-  "background_color": "#fff",
+  "background_color": "#006fff",
   "related_applications": [
     {
       "platform": "itunes",
