@@ -5,7 +5,7 @@
   "lang": "cn",
   "icons": [
     {
-      "src": "https://s.autoimg.cn/car/sw/logo_512.png",
+      "src": "https://s.autoimg.cn/car/sw/logo_512.png?v=1",
       "type": "image/png",
       "sizes": "512x512"
     },
@@ -24,7 +24,7 @@
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "theme_color": "#006fff",
+  "theme_color": "#2873FF",
   "background_color": "#006fff",
   "related_applications": [
     {
