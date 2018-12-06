@@ -7,7 +7,7 @@
     {
       "src": "assets/logo_512.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "512x512"
     },{
       "src": "assets/logo_192.png",
       "type": "image/png",
@@ -20,7 +20,7 @@
     }
   ],
   "start_url": "/workbox/m/",
-  "scope": "/",
+  "scope": "/m/",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#2873FF",
