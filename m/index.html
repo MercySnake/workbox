@@ -13,8 +13,14 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="white">
   <style>
     *{padding: 0; margin: 0;}
+    html,body{
+      height: 100%;
+    }
     img{
       max-width: 100%;
+    }
+    .wrapper{
+      min-height: calc(100% - 24px);
     }
     .center{
       width: 100%;
@@ -27,7 +33,6 @@
       color: #fff;
       line-height: 24px;
       text-align: center;
-      margin-top: 10px;
     }
     .tip.online{
       background-color: #2873FF;
@@ -82,11 +87,11 @@
     </section>
     <section class="center"><div><a href="../pc/">去 pc 页</a></div></section>
     <section class="center" id="userAgent"></section>
-    <section class="tip" id="lineStatus"></section>
   </section>
+  <section class="tip" id="lineStatus"></section>
   <script src="//s.autoimg.cn/mass/zepto-1.2.2.min.js"></script>
   <script src="//s.autoimg.cn/mass/mass-2.4.5.min.js"></script>
-  <script src="//s.autoimg.cn/car/sw/color.js?v=1.0.1"></script>
+  <!-- <script src="//s.autoimg.cn/car/sw/color.js?v=1.0.1"></script> -->
   <script async>
     // Check that service workers are registered
     if ('serviceWorker' in navigator) {
