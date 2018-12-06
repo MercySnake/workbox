@@ -57,6 +57,62 @@
   <script src="//s.autoimg.cn/com/co.ashx?path=/as/seajs/2.3.0/bundle.js,/as/jquery/1.12.4/jquery.js,/www/site/index/js/common.js&amp;20180320"></script>
   <script src="//s.autoimg.cn/car/sw/color.js?v=2.0.2"></script>
   <script src="index.js?=1.0.1"></script>
-  <script src="sw-register.js?v=1" async></script>
+  <!-- <script>
+    window.onload = function () {
+      var script = document.createElement('script');
+      var firstScript = document.getElementsByTagName('script')[0];
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = 'sw-register.js?v=' + Date.now();
+      firstScript.parentNode.insertBefore(script, firstScript);
+    };
+  </script> -->
+  <script async>
+    var athm_sw_version = 'v0.0.1';
+    if ('serviceWorker' in navigator) {
+      var athm_sw_url = 'sw.js';
+      // 注册 sw
+      navigator.serviceWorker.register(athm_sw_url).then((registration) => {
+        if (localStorage.getItem('athm_sw_version') !== athm_sw_version) {
+          registration.update().then(function () {
+            // console.log("[SW]: update done.");
+            localStorage.setItem('athm_sw_version', athm_sw_version);
+          })
+        }
+        registration.onupdatefound = function() {
+          var installingWorker = registration.installing;
+          if (navigator.serviceWorker.controller) {
+            installingWorker.onstatechange = function() {
+              switch (installingWorker.state) {
+                case 'installed':
+                  console.log("[SW]: New content is available; please refresh.");
+                  break;
+                case "redundant":
+                  console.error("[SW]: The installing service worker became redundant");
+                  break;
+                default:
+              }
+            }
+          }
+        }
+      }).catch((error) => {
+        console.log('[SW]: Error during service worker registration:', error);
+      });
+    }
+  </script>
+  <!-- <script async>
+      // 卸载 sw
+      if (navigator.serviceWorker.getRegistration) {
+      navigator.serviceWorker.getRegistration(athm_sw_url).then((registration) => {
+        if (registration && registration.unregister) {
+          registration.unregister();
+          localStorage.setItem('athm_sw_version', athm_sw_version);
+          console.log('[SW]: service worker unregistration success!');
+        }
+      }).catch((error) => {
+        console.log('[SW]: Error during service worker unregistration:', error);
+      });
+    }
+  </script> -->
 </body>
 </html>

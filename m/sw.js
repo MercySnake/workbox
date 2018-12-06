@@ -6,11 +6,17 @@ workbox.setConfig({
 });
 workbox.skipWaiting();
 workbox.clientsClaim();
+
+var currentCacheNames = {
+  page: 'm:page',
+  static: 'm:static'
+};
+
 // html 缓存
 workbox.routing.registerRoute(
   new RegExp('/(.*)'),
   workbox.strategies.networkFirst({
-    cacheName: 'athm-m-homepage',
+    cacheName: currentCacheNames.page,
     plugins: [
       new workbox.expiration.Plugin({
         maxEntries: 10
@@ -22,11 +28,28 @@ workbox.routing.registerRoute(
 workbox.routing.registerRoute(
   new RegExp('https://s\.autoimg\.cn/.*\.(?:js|css)'),
   workbox.strategies.staleWhileRevalidate({
-    cacheName: 'athm-m-static',
+    cacheName: currentCacheNames.static,
     plugins: [
       new workbox.expiration.Plugin({
-        maxEntries: 10
+        maxEntries: 10,
+        maxAgeSeconds: 2 * 24 * 60 * 60
       })
     ]
   })
 );
+
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      let validCacheSet = new Set(Object.values(currentCacheNames));
+      return Promise.all(
+        cacheNames.filter(function(cacheName){
+          return !validCacheSet.has(cacheName);
+        }).map(function(cacheName) {
+          console.log("Delete cache:", cacheName);
+          return caches.delete(cacheName);
+        })
+      );
+    })
+  );
+});
